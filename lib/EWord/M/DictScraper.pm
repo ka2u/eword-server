@@ -1,4 +1,4 @@
-package EWord::M::DicScraper;
+package EWord::M::DictScraper;
 
 use strict;
 use warnings;

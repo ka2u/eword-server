@@ -1,4 +1,4 @@
-package EWord::M::DicAPI;
+package EWord::M::DictAPI;
 
 use strict;
 use warnings;
