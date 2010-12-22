@@ -8,6 +8,7 @@ connect '/'      => 'EWord#list';
 connect '/input' => 'EWord#input';
 connect '/list'  => 'EWord#list';
 connect '/def'   => 'EWord#definition';
+connect '/delete'   => 'EWord#delete';
 
 
 1;
