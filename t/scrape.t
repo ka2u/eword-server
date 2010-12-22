@@ -1,5 +1,7 @@
-use EWord::M::DicScraper2;
-use EWord::M::DicAPI;
+use EWord::M::DictScraper2;
+use EWord::M::DictAPI;
+use Data::Dumper;
 
-EWord::M::DicScraper2->scrape;
-#EWord::M::DicAPI->get_def("wn", "elaborate");
+my $defines = EWord::M::DictScraper2->scrape("clarifies");
+warn Dumper $defines;
+#EWord::M::DictAPI->get_def("wn", "elaborate");
