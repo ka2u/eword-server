@@ -22,7 +22,16 @@ sub scrape {
     my $defines = $s->scrape(URI->new($uri));
     shift @{$defines->{body}}; #shift ' [ '
     shift @{$defines->{body}}; #shift ' ] '
-    return $defines;
+
+    my $definition;
+    foreach my $key (keys %{$defines}) {
+        while (my $line = shift @{$defines->{$key}}) {
+            next unless defined $line;
+            $definition .= $line . "\n";
+        }
+    }
+
+    return $definition;
 }
 
 1;

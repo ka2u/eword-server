@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use LWP::UserAgent;
+use XML::LibXML;
 
 sub get_def {
     my ($class, $dic, $word) = @_;
@@ -15,13 +16,15 @@ sub get_def {
     $uri->path("/DictService/DictService.asmx/DefineInDict");
     $uri->query("dictId=${dic}&word=${word}");
 
-    warn $uri->as_string;
     my $res = $ua->get($uri);
     if ($res->is_success) {
         warn $res->content;
+        my $dom = XML::LibXML->load_xml(string => $res->content);
+        my ($top, $node) = $dom->getElementsByTagName("WordDefinition");
+        return $node->textContent;
     }
     else {
-        warn "can't get";
+        return undef;
     }
 }
 
