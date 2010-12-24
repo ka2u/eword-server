@@ -18,10 +18,13 @@ sub get_def {
 
     my $res = $ua->get($uri);
     if ($res->is_success) {
-        warn $res->content;
         my $dom = XML::LibXML->load_xml(string => $res->content);
         my ($top, $node) = $dom->getElementsByTagName("WordDefinition");
-        return $node->textContent;
+        my $node_txt = $node->textContent;
+        $node_txt =~ s/\r|\n//g;
+        $node_txt =~ s/\s{2,}//g;
+        $node_txt =~ s/;/;\n/g;
+        return $node_txt;
     }
     else {
         return undef;
