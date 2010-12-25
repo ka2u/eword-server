@@ -1,0 +1,11 @@
+Plack
+DBIx::Skinny
+Web::Scraper
+Amon2
+DBD::mysql
+Log::Dispatch
+JSON
+Plack::Middleware::ReverseProxy
+Starman
+Server::Starter
+Net::Server::SS::Prefork
