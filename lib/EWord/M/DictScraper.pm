@@ -8,7 +8,7 @@ use LWP::UserAgent;
 use URI;
 use YAML;
 
-sub scrape {
+sub get_def {
     my $s = scraper {
         process "div.headword", h2 => "TEXT";
         process "div.d", div => "TEXT";
