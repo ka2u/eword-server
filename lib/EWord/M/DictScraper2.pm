@@ -8,7 +8,7 @@ use LWP::UserAgent;
 use URI;
 use YAML;
 
-sub scrape {
+sub get_def {
     my ($class, $word) = @_;
     my $s = scraper {
         process "tr>td>span.ResultBodyBlack", "bodyblack[]" => "TEXT";
