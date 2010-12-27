@@ -3,5 +3,5 @@ use EWord::M::DictAPI;
 use Data::Dumper;
 
 #my $defines = EWord::M::DictScraper2->scrape("clarifies");
-my $defines = EWord::M::DictAPI->get_def("wn", "hypothesis");
+my $defines = EWord::M::DictAPI->get_def("wn", "elaborate");
 warn Dumper $defines;

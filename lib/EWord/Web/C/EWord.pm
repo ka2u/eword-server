@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use Data::Dumper;
 use EWord::M::DictAPI;
+use EWord::M::DictScraper3;
 
 sub list {
     my ($class, $c) = @_;
@@ -37,8 +38,8 @@ sub input {
     my ($class, $c) = @_;
 
     my $word = $c->request->param("word");
-    my $definition = EWord::M::DictAPI->get_def("wn", $word);
-    return $c->render_json({result => "error"}) unless $definition;
+    my $definition = EWord::M::DictScraper3->get_def($word);
+    return $c->render_json({result => "error"}) unless defined $definition;
 
     my $row = $c->db->find_or_create("word",
             {
